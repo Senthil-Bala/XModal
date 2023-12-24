@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./Modal.css"
 
 function FormOpen({ onSubmit }) {
   const [name, setName] = useState('');
@@ -31,7 +32,11 @@ function FormOpen({ onSubmit }) {
       phone,
       dob,
     };
-    onSubmit(formData); // Pass form data to parent component for submission
+
+    // For testing purposes, we'll dispatch a custom event 'formSubmitted' on the document
+    document.dispatchEvent(new CustomEvent('formSubmitted', { detail: formData }));
+
+    // Clear form fields after submission
     setName('');
     setEmail('');
     setPhone('');
@@ -39,15 +44,13 @@ function FormOpen({ onSubmit }) {
   };
 
   return (
-    
-        <div className="modal-content">
+    <div className="modal-content">
       <form onSubmit={handleSubmit}>
         <h1>Fill Details</h1>
         <label>
           <b>Username:</b>
           <br />
           <input
-          id="username"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -59,7 +62,6 @@ function FormOpen({ onSubmit }) {
           <b>Email Address:</b>
           <br />
           <input
-          id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +73,6 @@ function FormOpen({ onSubmit }) {
           <b>Phone Number:</b>
           <br />
           <input
-          id="phone"
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -83,12 +84,19 @@ function FormOpen({ onSubmit }) {
         <label>
           <b>Date of Birth:</b>
           <br />
-          <input id="dob" type="date" value={dob} onChange={handleDateChange} required />
+          <input
+            type="date"
+            value={dob}
+            onChange={handleDateChange}
+            required
+          />
         </label>
         <br />
-        <button className="submit-button" type="submit">Submit</button>
+        <button className="submit-button" type="submit">
+          Submit
+        </button>
       </form>
-      </div>
+    </div>
   );
 }
 
