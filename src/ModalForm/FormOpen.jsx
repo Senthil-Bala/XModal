@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./Modal.css"
 
-function FormOpen({handleCloseModal}) {
+function FormOpen({ onSubmit}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -26,7 +26,6 @@ function FormOpen({handleCloseModal}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const formData = {
       name,
       email,
@@ -42,7 +41,7 @@ function FormOpen({handleCloseModal}) {
     setEmail('');
     setPhone('');
     setDob('');
-    handleCloseModal();
+    // handleCloseModal()
   };
 
   return (

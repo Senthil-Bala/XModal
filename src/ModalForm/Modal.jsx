@@ -33,7 +33,7 @@ function Modal() {
       <button onClick={handleOpenModal}>Open Form</button>
       {isOpen && (
         <div className="modal-content" ref={modalRef}>
-          <FormOpen handleCloseModal={handleCloseModal}/>
+          <FormOpen/>
         </div>
       )}
     </div>
