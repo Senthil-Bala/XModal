@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./Modal.css"
 
-function FormOpen({ onSubmit }) {
+function FormOpen({ handleCloseModal }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -41,6 +41,8 @@ function FormOpen({ onSubmit }) {
     setEmail('');
     setPhone('');
     setDob('');
+
+    handleCloseModal()
   };
 
   return (
@@ -51,6 +53,7 @@ function FormOpen({ onSubmit }) {
           <b>Username:</b>
           <br />
           <input
+          id='username'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -62,6 +65,7 @@ function FormOpen({ onSubmit }) {
           <b>Email Address:</b>
           <br />
           <input
+          id='email'
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -73,6 +77,7 @@ function FormOpen({ onSubmit }) {
           <b>Phone Number:</b>
           <br />
           <input
+          id='phone'
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -85,6 +90,7 @@ function FormOpen({ onSubmit }) {
           <b>Date of Birth:</b>
           <br />
           <input
+          id='dob'
             type="date"
             value={dob}
             onChange={handleDateChange}
