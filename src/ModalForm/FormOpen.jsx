@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./Modal.css"
 
-function FormOpen({ onSubmit }) {
+function FormOpen({handleCloseModal}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -26,21 +26,23 @@ function FormOpen({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const formData = {
       name,
       email,
       phone,
       dob,
     };
-
-    // For testing purposes, we'll dispatch a custom event 'formSubmitted' on the document
-    document.dispatchEvent(new CustomEvent('formSubmitted', { detail: formData }));
+    // Handle form submission internally (example: validation)
+    // You can also pass this formData to the parent component using `onSubmit(formData)`
+    console.log('Form Data:', formData);
 
     // Clear form fields after submission
     setName('');
     setEmail('');
     setPhone('');
     setDob('');
+    handleCloseModal();
   };
 
   return (
