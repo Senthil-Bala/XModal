@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import User from "./User";
+import User from "./components/User";
 import './App.css'
 
 const App = () => {
