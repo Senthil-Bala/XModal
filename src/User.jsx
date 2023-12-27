@@ -43,7 +43,7 @@ const User = ({ closeModal }) => {
   };
 
   const handleOutsideClick = (event) => {
-    if (event.target.classList.contains("modal")) {
+    if (event.currentTarget.classList.contains("modal")) {
       closeModal();
     }
   };
